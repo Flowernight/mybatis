@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.apache.mytest.PayPaymentMapper">
+	<resultMap id="BaseResultMap"
+		type="org.apache.mytest.PayPaymentDO">
+		<id column="PAY_SERIAL_NO" property="paySerialNo" jdbcType="VARCHAR" />
+		<result column="AMOUNT" property="amount" jdbcType="DECIMAL" />
+		<result column="PAY_STATUS" property="payStatus" jdbcType="VARCHAR" />
+		<result column="PAY_METHOD" property="payMethod" jdbcType="VARCHAR" />
+		<result column="CARD_NO" property="cardNo" jdbcType="VARCHAR" />
+		<result column="BANK_ID" property="bankId" jdbcType="VARCHAR" />
+		<result column="BANK_TYPE" property="bankType" jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+		<result column="MODIFY_TIME" property="modifyTime" jdbcType="VARCHAR" />
+		<result column="TRADE_PAY_ID" property="tradePayId" jdbcType="VARCHAR" />
+		<result column="MEMO" property="memo" jdbcType="VARCHAR" />
+		<result column="AUTH_ID" property="authId" jdbcType="VARCHAR" />
+		<result column="PAY_TYPE" property="payType" jdbcType="VARCHAR" />
+		<result column="ORI_PAY_NO" property="oriPayNo" jdbcType="VARCHAR" />
+		<result column="ACC_SERIAL_NO" property="accSerialNo" jdbcType="VARCHAR" />
+		<result column="REFUND_AMOUNT" property="refundAmount" jdbcType="DECIMAL" />
+		<result column="CHANNEL_TYPE" property="channelType" jdbcType="VARCHAR" />
+		<result column="CARD_TYPE" property="cardType" jdbcType="VARCHAR" />
+		<result column="BATCH_ID" property="batchId" jdbcType="VARCHAR" />
+		<result column="SYSTEM_ENV_FLAG" property="systemEnvFlag" jdbcType="VARCHAR" />
+		<result column="PRO_CODE" property="proCode" jdbcType="VARCHAR" />
+		<result column="PAY_CODE" property="payCode" jdbcType="VARCHAR" />
+		<result column="REFUND_TYPE" property="refundType" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		PAY_SERIAL_NO, AMOUNT, PAY_STATUS,PAY_METHOD, CARD_NO,
+		BANK_ID, BANK_TYPE,CREATE_TIME, MODIFY_TIME, 
+		TRADE_PAY_ID, MEMO,AUTH_ID, PAY_TYPE,ORI_PAY_NO,
+		ACC_SERIAL_NO, REFUND_AMOUNT,CHANNEL_TYPE, 
+		CARD_TYPE, BATCH_ID,SYSTEM_ENV_FLAG,PRO_CODE,PAY_CODE,REFUND_TYPE
+	</sql>
+
+
+	<insert id="insert"
+		parameterType="org.apache.mytest.PayPaymentDO">
+		INSERT INTO PAY_PAYMENT_INFO (PAY_SERIAL_NO, AMOUNT,
+		PAY_STATUS,
+		PAY_METHOD, CARD_NO, BANK_ID,
+		BANK_TYPE, CREATE_TIME,
+		MODIFY_TIME, TRADE_PAY_ID,
+		MEMO, AUTH_ID, PAY_TYPE,
+		ORI_PAY_NO,
+		ACC_SERIAL_NO, REFUND_AMOUNT,
+		CHANNEL_TYPE, CARD_TYPE, BATCH_ID,SYSTEM_ENV_FLAG,PRO_CODE,PAY_CODE,REFUND_TYPE)
+		VALUES
+		(#{paySerialNo,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL},
+		#{payStatus,jdbcType=VARCHAR},
+		#{payMethod,jdbcType=VARCHAR},
+		#{cardNo,jdbcType=VARCHAR},
+		#{bankId,jdbcType=VARCHAR},
+		#{bankType,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR},
+		#{modifyTime,jdbcType=VARCHAR}, #{tradePayId,jdbcType=VARCHAR},
+		#{memo,jdbcType=VARCHAR}, #{authId,jdbcType=VARCHAR},
+		#{payType,jdbcType=VARCHAR},
+		#{oriPayNo,jdbcType=VARCHAR},
+		#{accSerialNo,jdbcType=VARCHAR}, #{refundAmount,jdbcType=DECIMAL},
+		#{channelType,jdbcType=VARCHAR}, #{cardType,jdbcType=VARCHAR},
+		#{batchId,jdbcType=VARCHAR},#{systemEnvFlag,jdbcType=VARCHAR},
+    	#{proCode,jdbcType=VARCHAR},#{payCode,jdbcType=VARCHAR},#{refundType,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="update"
+		parameterType="org.apache.mytest.PayPaymentDO">
+		update PAY_PAYMENT_INFO
+		<set>
+			<if test="amount != null">
+				AMOUNT = #{amount,jdbcType=DECIMAL},
+			</if>
+			<if test="payStatus != null">
+				PAY_STATUS = #{payStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="payMethod != null">
+				PAY_METHOD = #{payMethod,jdbcType=VARCHAR},
+			</if>
+			<if test="cardNo != null">
+				CARD_NO = #{cardNo,jdbcType=VARCHAR},
+			</if>
+			<if test="bankId != null">
+				BANK_ID = #{bankId,jdbcType=VARCHAR},
+			</if>
+			<if test="bankType != null">
+				BANK_TYPE = #{bankType,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyTime != null">
+				MODIFY_TIME = #{modifyTime,jdbcType=VARCHAR},
+			</if>
+			<if test="tradePayId != null">
+				TRADE_PAY_ID = #{tradePayId,jdbcType=VARCHAR},
+			</if>
+			<if test="memo != null">
+				MEMO = #{memo,jdbcType=VARCHAR},
+			</if>
+			<if test="authId != null">
+				AUTH_ID = #{authId,jdbcType=VARCHAR},
+			</if>
+			<if test="payType != null">
+				PAY_TYPE = #{payType,jdbcType=VARCHAR},
+			</if>
+			<if test="oriPayNo != null">
+				ORI_PAY_NO = #{oriPayNo,jdbcType=VARCHAR},
+			</if>
+			<if test="accSerialNo != null">
+				ACC_SERIAL_NO = #{accSerialNo,jdbcType=VARCHAR},
+			</if>
+			<if test="refundAmount != null">
+				REFUND_AMOUNT = #{refundAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="channelType != null">
+				CHANNEL_TYPE = #{channelType,jdbcType=VARCHAR},
+			</if>
+			<if test="cardType != null">
+				CARD_TYPE = #{cardType,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<where>
+			PAY_SERIAL_NO = #{paySerialNo,jdbcType=VARCHAR}
+			<choose>
+				<when test="payStatus == '00'">	<!-- 成功终结态更新 -->
+					AND PAY_STATUS not in ('00')
+				</when>
+				<when test="payStatus == '01'">	<!-- 失败更新 -->
+					AND PAY_STATUS not in ('00', '01')
+				</when>
+				<when test="payStatus == '03'">		<!-- 过程中更新 -->
+					AND PAY_STATUS not in ('00', '01', '03')
+				</when>
+				<otherwise>		<!-- 异常入参 do nothing -->
+					AND PAY_SERIAL_NO != #{paySerialNo,jdbcType=VARCHAR}
+				</otherwise>
+			</choose>
+		</where>
+	</update>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from PAY_PAYMENT_INFO
+		where PAY_SERIAL_NO =
+		#{paySerialNo,jdbcType=VARCHAR}
+	</select>
+
+</mapper>

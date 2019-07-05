@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- <setting name="aggressiveLazyLoading" value="false"/> -->
+    </settings>
+    <typeAliases>
+        <typeAlias alias="payPaymentDO" type="org.apache.mytest.PayPaymentDO"/>
+    </typeAliases>
+    <!--<typeHandlers>
+        <typeHandler jdbcType="VARCHAR" javaType="string" handler="org.apache.mytest.MyStringHandler"/>
+    </typeHandlers>-->
+    <!-- 定义数据库的信息，默认使用development数据库构建环境 -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+                <!--com.mysql.jdbc.Driver-->
+                <property name="url" value="jdbc:oracle:thin:@192.168.16.4:1521/devhlw" />
+                <property name="username" value="sum_pay" />
+                <property name="password" value="dev32_kjGde" />
+            </dataSource>
+    </environment>
+    </environments>
+    <!-- 定义映射器 -->
+    <mappers>
+        <package name="org.apache.mytest"/>
+    </mappers>
+</configuration>
